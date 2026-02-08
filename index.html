@@ -16,6 +16,15 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- SVG Filter to Remove White Background -->
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+        <filter id="removeWhite" color-interpolation-filters="sRGB">
+            <feColorMatrix type="matrix" values="1 0 0 0 0  
+                                                 0 1 0 0 0  
+                                                 0 0 1 0 0  
+                                                 -1 -1 -1 1 2.95" />
+        </filter>
+    </svg>
 </head>
 
 <body>
