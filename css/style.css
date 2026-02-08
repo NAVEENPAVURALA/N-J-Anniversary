@@ -575,8 +575,8 @@ h3,
 
 /* 3D SEQUENCE ANIMATION */
 .sequence-section {
-    height: 600vh;
-    /* Reduced from 1200vh to fix "too much gap" */
+    height: 1200vh;
+    /* Reverted to 1200vh per user request */
     position: relative;
     background: #000;
     z-index: 5;
