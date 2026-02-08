@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // FORCE SCROLL TO TOP ON RELOAD
+    if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
 
     // --------------------------------------------------------------------------
     // 0. Heartbeat Preloader (The "Anticipation" Phase)
