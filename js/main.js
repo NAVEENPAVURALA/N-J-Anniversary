@@ -114,18 +114,38 @@ document.addEventListener("DOMContentLoaded", () => {
     // --------------------------------------------------------------------------
     // 5. Live Love Counter
     // --------------------------------------------------------------------------
-    const startDate = new Date("2025-02-09T00:00:00").getTime();
+    const startDate = new Date("2025-02-09T00:00:00");
     const counterElement = document.getElementById('live-counter');
     setInterval(() => {
-        const diff = new Date().getTime() - startDate;
-        if (diff > 0) {
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const y = Math.floor(d / 365);
-            const rD = d % 365;
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
-            if (counterElement) counterElement.innerText = `${y}Y ${rD}D ${h}H ${m}M ${s}S`;
+        const now = new Date();
+
+        let years = now.getFullYear() - startDate.getFullYear();
+        let months = now.getMonth() - startDate.getMonth();
+        let days = now.getDate() - startDate.getDate();
+        let hours = now.getHours() - startDate.getHours();
+        let minutes = now.getMinutes() - startDate.getMinutes();
+        let seconds = now.getSeconds() - startDate.getSeconds();
+
+        // Adjust negative values by borrowing from larger units
+        if (seconds < 0) { seconds += 60; minutes--; }
+        if (minutes < 0) { minutes += 60; hours--; }
+        if (hours < 0) { hours += 24; days--; }
+
+        if (days < 0) {
+            // Borrow days from the previous month
+            const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+            days += prevMonth.getDate();
+            months--;
+        }
+
+        if (months < 0) {
+            months += 12;
+            years--;
+        }
+
+        if (counterElement) {
+            // Format: Y M D H M S (Accurate for a lifetime)
+            counterElement.innerText = `${years}Y ${months}M ${days}D ${hours}H ${minutes}M ${seconds}S`;
         }
     }, 1000);
 
