@@ -1000,20 +1000,21 @@ h3,
 }
 
 /* Rose Overlay at Bottom (Transparent PNG) */
+/* Rose Overlay at Bottom (Transparent via Code) */
 .letter-rose-header {
     position: absolute;
     bottom: -10px;
     left: -10px;
-    width: 180px;
+    width: 200px;
     height: auto;
     display: block;
     margin: 0;
 
+    /* Magic Filter: Turns white background to transparent */
+    filter: url(#removeWhite) drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+
     border-radius: 0;
     box-shadow: none;
-    /* PNG handles shape, maybe drop-shadow filter? */
-    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
-    /* Better shadow for PNG */
     border: none;
     mask-image: none;
     -webkit-mask-image: none;
