@@ -374,19 +374,23 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Rose rain triggered!");
             const container = document.getElementById('heart-container') || document.body;
 
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 60; i++) { // Increased count for better density
                 setTimeout(() => {
-                    const h = document.createElement('img'); // Changed to img
+                    const h = document.createElement('img');
                     h.src = 'rose-petal.png';
-                    h.className = 'heart'; // Keep class for animation, or rename to 'rose-rain' if you prefer
+                    h.className = 'heart';
                     h.style.left = Math.random() * 100 + 'vw';
-                    h.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                    h.style.transform = `rotate(${Math.random() * 360}deg)`; // Random start rotation
+                    h.style.animationDuration = (Math.random() * 3 + 3) + 's'; // Slower, more floaty
+
+                    // Randomize size and rotation for realism
+                    const size = Math.random() * 20 + 20; // 20px to 40px
+                    h.style.width = size + 'px';
+                    h.style.transform = `rotate(${Math.random() * 360}deg)`;
+
                     container.appendChild(h);
 
-                    // Cleanup
-                    setTimeout(() => h.remove(), 5000);
-                }, i * 100); // Slower spawn for better impact
+                    setTimeout(() => h.remove(), 6000);
+                }, i * 80);
             }
         });
     }
