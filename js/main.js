@@ -273,13 +273,30 @@ document.addEventListener("DOMContentLoaded", () => {
     let ds = document.querySelector('.hero-date') ? new ScrambleText(document.querySelector('.hero-date'), '0123456789-./') : null;
 
     if (enterBtn) {
+        console.log("Enter Button Found, attaching listener...");
         enterBtn.addEventListener('click', () => {
-            if (audio) { audio.volume = 0; audio.play().then(() => gsap.to(audio, { volume: 1.0, duration: 3 })).catch(e => console.log("Audio block")); document.getElementById('audio-control')?.classList.add('playing'); }
-            gsap.timeline({ onComplete: () => { if (ts) ts.start(); if (ds) ds.start(); } })
-                .to('.intro-content', { opacity: 0, duration: 0.5 })
-                .to(introOverlay, { opacity: 0, duration: 0.8, pointerEvents: 'none' })
-                .to('.hero-title, .hero-date, .live-counter-wrapper, .hero-subtitle, .scroll-indicator, #audio-control', { opacity: 1, y: 0, scale: 1, duration: 1, stagger: 0.1 });
+            console.log("Enter Button Clicked!");
+            try {
+                if (audio) {
+                    audio.volume = 0;
+                    audio.play().then(() => {
+                        console.log("Audio playing...");
+                        gsap.to(audio, { volume: 1.0, duration: 3 });
+                    }).catch(e => console.error("Audio playback failed:", e));
+                    document.getElementById('audio-control')?.classList.add('playing');
+                }
+
+                // Animate Out Intro
+                gsap.timeline({ onComplete: () => { if (ts) ts.start(); if (ds) ds.start(); } })
+                    .to('.intro-content', { opacity: 0, duration: 0.5 })
+                    .to(introOverlay, { opacity: 0, duration: 0.8, pointerEvents: 'none' })
+                    .to('.hero-title, .hero-date, .live-counter-wrapper, .hero-subtitle, .scroll-indicator, #audio-control', { opacity: 1, y: 0, scale: 1, duration: 1, stagger: 0.1 });
+            } catch (err) {
+                console.error("Error in Enter Button Handler:", err);
+            }
         });
+    } else {
+        console.error("Enter Button NOT Found!");
     }
 
     // --------------------------------------------------------------------------
