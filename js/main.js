@@ -453,12 +453,15 @@ document.addEventListener("DOMContentLoaded", () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
+            // BACKGROUND FILL: Prevent empty space
+            context.fillStyle = "#000000";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
             const img = images[constIndex];
-            const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
+            const scale = Math.max(canvas.width / img.width, canvas.height / img.height) + 0.05; // Slight overscale
             const x = (canvas.width / 2) - (img.width / 2) * scale;
             const y = (canvas.height / 2) - (img.height / 2) * scale;
 
-            context.clearRect(0, 0, canvas.width, canvas.height);
             context.drawImage(img, x, y, img.width * scale, img.height * scale);
         }
 
