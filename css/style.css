@@ -1222,13 +1222,23 @@ h3,
 }
 
 /* Rose Garden Footer Image */
+.rose-footer-wrapper {
+    line-height: 0;
+    font-size: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* container clips style */
+}
+
 .footer-rose-garden {
     width: 100%;
     max-width: none;
     height: auto;
     display: block;
-    margin: 0;
-    /* No margin */
+    margin: 0 0 -2px 0;
+    /* Tiny negative margin to ensure overlap */
     padding: 0;
     opacity: 1;
     mask-image: linear-gradient(to top, black 85%, transparent 100%);
@@ -1237,8 +1247,6 @@ h3,
     z-index: 10;
     pointer-events: none;
     object-fit: cover;
-    vertical-align: bottom;
-    /* Removes inline gap */
 }
 
 /* 4. Cinematic Blur Reveal */
