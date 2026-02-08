@@ -421,6 +421,66 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // --------------------------------------------------------------------------
+    // 8.5. SEQUENCE ANIMATION (New Feature: Journey in Motion)
+    // --------------------------------------------------------------------------
+    const canvas = document.getElementById("sequence-canvas");
+    if (canvas) {
+        const context = canvas.getContext("2d");
+        const frameCount = 192; // Total frames
+        const currentFrame = { index: 0 };
+        const images = [];
+
+        // Preload Images
+        for (let i = 1; i <= frameCount; i++) {
+            const img = new Image();
+            // File naming: ezgif-frame-001.jpg, ezgif-frame-010.jpg, ezgif-frame-100.jpg
+            const frameNumber = i.toString().padStart(3, '0');
+            img.src = `assets/sequence/ezgif-frame-${frameNumber}.jpg`;
+            images.push(img);
+        }
+
+        // Render Function (Cover Logic)
+        function render() {
+            // Ensure image is loaded
+            if (!images[currentFrame.index] || !images[currentFrame.index].complete) return;
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const img = images[currentFrame.index];
+            const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
+            const x = (canvas.width / 2) - (img.width / 2) * scale;
+            const y = (canvas.height / 2) - (img.height / 2) * scale;
+
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(img, x, y, img.width * scale, img.height * scale);
+        }
+
+        // Trigger Render on first image load
+        images[0].onload = render;
+
+        // GSAP ScrollTrigger
+        gsap.to(currentFrame, {
+            index: frameCount - 1,
+            snap: "index", // Snap to whole frames
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".sequence-section",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 0, // Instant scrubbing for responsiveness
+                pin: true, // Pin the section while playing
+                onUpdate: () => {
+                    render();
+                }
+            }
+        });
+
+        // Handle Resize
+        window.addEventListener('resize', render);
+    }
+
+    // --------------------------------------------------------------------------
     // 9. Rose Rain Logic (Footer Trigger)
     // --------------------------------------------------------------------------
     const footerTrigger = document.getElementById('footer-trigger');
