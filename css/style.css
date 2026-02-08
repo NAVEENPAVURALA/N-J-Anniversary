@@ -575,11 +575,12 @@ h3,
 
 /* 3D SEQUENCE ANIMATION */
 .sequence-section {
-    height: 1200vh;
-    /* Reverted to 1200vh per user request */
+    height: 100vh;
+    /* Fixed height, scroll distance handled by JS */
     position: relative;
     background: #000;
     z-index: 5;
+    overflow: hidden;
 }
 
 #sequence-canvas {

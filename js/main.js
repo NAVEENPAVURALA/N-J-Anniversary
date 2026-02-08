@@ -468,18 +468,23 @@ document.addEventListener("DOMContentLoaded", () => {
         // Trigger Render on first image load
         images[0].onload = render;
 
-        // GSAP ScrollTrigger
-        gsap.to(currentFrame, {
-            index: frameCount - 1,
-            snap: "index", // Snap to whole frames
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".sequence-section",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 0, // Instant scrubbing for responsiveness
-                pin: true, // Pin the section while playing
-                onUpdate: () => {
+
+        // GSAP ScrollTrigger (Virtual Scroll Logic)
+        ScrollTrigger.create({
+            trigger: ".sequence-section",
+            start: "top top",
+            end: "+=12000", // Force 12,000px scroll distance (approx 12-15 screens)
+            pin: true,
+            scrub: true,
+            onUpdate: self => {
+                // Map progress (0 to 1) to frame index (0 to 271)
+                const frameIndex = Math.min(
+                    frameCount - 1,
+                    Math.floor(self.progress * frameCount)
+                );
+
+                if (frameIndex !== currentFrame.index) {
+                    currentFrame.index = frameIndex;
                     render();
                 }
             }
