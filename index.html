@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Story of Us | Bannu & Jyo</title>
+    <meta name="description" content="A cinematic story of love, destiny, and forever. Bannu & Jyo, February 9, 2026.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Gold Dust Cursor -->
+    <canvas id="gold-dust"></canvas>
+
+    <!-- Spotlight Cursor -->
+    <div class="cursor-spotlight"></div>
+
+    <!-- Noise/Grain Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Canvas for Dust Particles -->
+    <canvas id="dust-canvas"></canvas>
+
+    <!-- Thread of Fate SVG Container -->
+    <svg class="thread-container" preserveAspectRatio="none">
+        <path id="thread-path" d="" fill="none" stroke="#D1001F" stroke-width="4" />
+    </svg>
+
+    <!-- Intro / Enter Screen -->
+    <div class="intro-overlay">
+        <div class="intro-content">
+            <div class="intro-title">The Story of Us</div>
+            <p class="intro-hint">Put on your headphones.</p>
+            <button id="enter-btn" class="enter-btn">Enter Experience</button>
+        </div>
+    </div>
+
+    <!-- Audio Control -->
+    <div class="audio-control" id="audio-control">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <!-- Audio Element (Hidden) -->
+    <audio id="bg-music" loop>
+        <!-- Using a more cinematic track if possible, or sticking to the piano one -->
+        <source src="music.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <main id="smooth-wrapper">
+        <div id="smooth-content">
+
+            <!-- Hero Section -->
+            <section class="hero" id="hero">
+                <div class="hero-bg"></div>
+                <div class="hero-content">
+                    <div class="hero-date">February 9, 2026</div>
+                    <h1 class="hero-title">The day our forever completed one more year.</h1>
+
+                    <!-- LIVE COUNTER -->
+                    <div class="live-counter-wrapper">
+                        <div class="counter-label">Loving you for</div>
+                        <div id="live-counter" class="live-counter">00Y 00D 00H 00M 00S</div>
+                    </div>
+
+                    <p class="hero-subtitle">This story was never planned — it was destined.</p>
+                </div>
+                <div class="scroll-indicator">
+                    <span>Follow the thread</span>
+                    <div class="line"></div>
+                </div>
+            </section>
+
+            <!-- Love Story Timeline -->
+            <section class="timeline-section" id="timeline">
+                <div class="container small">
+                    <!-- Removing CSS line, replacing with SVG thread logic visually -->
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>By God’s Plan</h3>
+                            <p>Our paths crossed in a temple. A place of peace became the beginning of love.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-spacer"></div>
+
+                    <div class="timeline-item right">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>The Moment</h3>
+                            <p>When you held my hand, everything felt right. It was spiritual, intimate, and fated.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-spacer"></div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Destiny</h3>
+                            <p>From that day on, every step has been a promise kept.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Meaning of Us (Interstitial Quotes) -->
+            <section class="meaning-section" id="meaning">
+                <div class="meaning-container">
+                    <div class="meaning-text">Two souls.</div>
+                    <div class="meaning-text">One path.</div>
+                    <div class="meaning-text highlight">Infinite love.</div>
+                </div>
+            </section>
+
+            <!-- 3D MEMORIES GALLERY (REMOVED) -->
+            <!-- <section class="memories-section" id="memories"> ... </section> -->
+
+            <!-- Horizontal Vows Section -->
+            <section class="vows-section-wrapper" id="vows">
+                <div class="vows-container">
+                    <div class="vow-card">
+                        <h3>I Promise</h3>
+                        <p>To be your peace when the world is loud.</p>
+                    </div>
+                    <div class="vow-card">
+                        <h3>I Promise</h3>
+                        <p>To hold your hand through every season.</p>
+                    </div>
+                    <div class="vow-card">
+                        <h3>I Promise</h3>
+                        <p>To love you more tomorrow than I do today.</p>
+                    </div>
+                    <div class="vow-card final">
+                        <h3>Forever</h3>
+                        <p>Is just the beginning.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why You Matter -->
+            <section class="emotional-section" id="emotional">
+                <div class="container narrow">
+                    <div class="text-reveal">
+                        <p>In a world of noise,</p>
+                        <p>you are my <span class="highlight">silence</span>.</p>
+                        <p>In a life of chaos,</p>
+                        <p>you are my <span class="highlight">peace</span>.</p>
+                        <br>
+                        <p>Thank you for being my home.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Secret Letter Section -->
+            <section class="letter-section" id="letter">
+                <div class="container narrow">
+                    <div class="letter-preview">
+                        <p class="letter-intro">One last thing...</p>
+                        <button id="open-letter-btn" class="letter-btn">Read My Heart</button>
+                    </div>
+                    <div class="letter-content" id="letter-content">
+                        <div class="letter-paper">
+                            <p>My Dearest Jyo,</p>
+                            <p>Every day with you feels like a page from a book I never want to end. This website is
+                                just a glimpse of the universe you describe in my heart.</p>
+                            <p>You are my calm in the storm, my laughter in the quiet, and my home in this big world.
+                            </p>
+                            <p>Here's to us, to not just one anniversary, but to a lifetime of them. I love you,
+                                endlessly.</p>
+                            <p class="letter-sign">- Your Bannu</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Promise / Future -->
+            <section class="promise-section" id="promise">
+                <div class="promise-bg"></div>
+                <div class="promise-content">
+                    <p class="final-message">
+                        No matter where life takes us,<br>
+                        I choose you — <span class="heartbeat">again and again</span>.
+                    </p>
+                </div>
+            </section>
+
+            <footer class="footer infinite-footer">
+                <div class="infinite-glow">To be continued forever...</div>
+                <div class="footer-signatures">Bannu <span class="heartbeat">&</span> Jyo</div>
+                <div class="footer-hint" id="footer-trigger">(Click for a surprise rain)</div>
+            </footer>
+
+        </div>
+    </main>
+
+    <!-- Heart Rain Container (Moved to Body for Fixed Position) -->
+    <div id="heart-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
