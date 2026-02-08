@@ -993,15 +993,26 @@ h3,
 }
 
 /* Rose Header in Letter */
+/* Rose Header in Letter */
 .letter-rose-header {
     width: 100%;
-    max-width: 150px;
+    max-width: 220px;
+    /* Larger for watermark feel */
     height: auto;
     display: block;
-    margin: 0 auto 1.5rem;
-    border-radius: 50%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border: 2px solid rgba(212, 175, 55, 0.3);
+    margin: 0 auto 1rem;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+
+    /* VIGNETTE MASK to soft-fade edges */
+    mask-image: radial-gradient(circle, black 30%, transparent 70%);
+    -webkit-mask-image: radial-gradient(circle, black 30%, transparent 70%);
+
+    opacity: 0.85;
+    /* Subtle overlay */
+    mix-blend-mode: screen;
+    /* Blends nicely if background is dark */
 }
 
 .letter-paper p {
