@@ -374,10 +374,12 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Rose rain triggered!");
             const container = document.getElementById('heart-container') || document.body;
 
+            const petalImages = ['rose-petal.png', 'rose-petal-2.png']; // Multiple variants
+
             for (let i = 0; i < 60; i++) { // Increased count for better density
                 setTimeout(() => {
                     const h = document.createElement('img');
-                    h.src = 'rose-petal.png';
+                    h.src = petalImages[Math.floor(Math.random() * petalImages.length)]; // Random pick
                     h.className = 'heart';
                     h.style.left = Math.random() * 100 + 'vw';
                     h.style.animationDuration = (Math.random() * 3 + 3) + 's'; // Slower, more floaty
