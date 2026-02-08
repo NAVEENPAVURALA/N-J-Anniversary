@@ -266,9 +266,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const introOverlay = document.querySelector('.intro-overlay');
     const audio = document.getElementById('bg-music');
 
-    // Scramblers
-    let ts = document.querySelector('.hero-title') ? new ScrambleText(document.querySelector('.hero-title')) : null;
-    let ds = document.querySelector('.hero-date') ? new ScrambleText(document.querySelector('.hero-date'), '0123456789-./') : null;
+    // Scramblers REMOVED (User Feedback: looked like error)
+    // let ts = document.querySelector('.hero-title') ? new ScrambleText(document.querySelector('.hero-title')) : null;
+    // let ds = document.querySelector('.hero-date') ? new ScrambleText(document.querySelector('.hero-date'), '0123456789-./') : null;
 
     if (enterBtn) {
         enterBtn.addEventListener('click', () => {
@@ -282,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 // Animate Out Intro
-                gsap.timeline({ onComplete: () => { if (ts) ts.start(); if (ds) ds.start(); } })
+                gsap.timeline()
                     .to('.intro-content', { opacity: 0, duration: 0.5 })
                     .to(introOverlay, { opacity: 0, duration: 0.8, pointerEvents: 'none' })
                     .to('.hero-title, .hero-date, .live-counter-wrapper, .hero-subtitle, .scroll-indicator, #audio-control', { opacity: 1, y: 0, scale: 1, duration: 1, stagger: 0.1 });
