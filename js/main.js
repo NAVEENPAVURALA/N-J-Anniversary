@@ -426,7 +426,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById("sequence-canvas");
     if (canvas) {
         const context = canvas.getContext("2d");
-        const frameCount = 192; // Total frames
+        const frameCount = 272; // Updated from 192
         const currentFrame = { index: 0 };
         const images = [];
 

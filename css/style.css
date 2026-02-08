@@ -575,8 +575,8 @@ h3,
 
 /* 3D SEQUENCE ANIMATION */
 .sequence-section {
-    height: 800vh;
-    /* Increased from 400vh to slow down playback */
+    height: 1200vh;
+    /* Increased for 272 frames */
     position: relative;
     background: #000;
     z-index: 5;
