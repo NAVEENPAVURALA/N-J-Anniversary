@@ -46,9 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // --------------------------------------------------------------------------
     // 1. Core Setup & Mobile Normalize
     // --------------------------------------------------------------------------
-    // --------------------------------------------------------------------------
-    // 1. Core Setup & Mobile Normalize
-    // --------------------------------------------------------------------------
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
     // OPTIMIZED: Smoother mobile settings, less resistance
@@ -61,15 +58,35 @@ document.addEventListener("DOMContentLoaded", () => {
         touchMultiplier: 2
     });
 
+    // FORCE SCROLL TOP (Lenis Aware)
+    lenis.scrollTo(0, { immediate: true });
+
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
     gsap.registerPlugin(ScrollTrigger);
 
     // --------------------------------------------------------------------------
+    // 10. Letter & Footer
+    // --------------------------------------------------------------------------
+    document.getElementById('open-letter-btn')?.addEventListener('click', (e) => {
+        document.getElementById('letter-content').classList.toggle('open');
+        e.currentTarget.textContent = document.getElementById('letter-content').classList.contains('open') ? "Close" : "Read My Heart";
+    });
+
+    // --------------------------------------------------------------------------
+    // 9. Rose Rain Logic (Footer Trigger)
+    // --------------------------------------------------------------------------
+    const footerTrigger = document.getElementById('footer-trigger');
+    let mouseX = 0, mouseY = 0; // These are already declared globally for cursor, but re-declaring here for clarity if needed for this section specifically.
+    // The original mouseX, mouseY for cursor are defined later in section 2.
+    // If this section needs mouseX/Y, it should use the global ones or define its own.
+    // Assuming the instruction means to use the existing mouseX/Y from section 2.
+
+    // --------------------------------------------------------------------------
     // 2. Interactive Spotlight & TRUE LOVE RIPPLE
     // --------------------------------------------------------------------------
     const cursor = document.querySelector('.cursor-spotlight');
-    let mouseX = 0, mouseY = 0;
+    // let mouseX = 0, mouseY = 0; // Moved declaration to top of file or global scope if needed by multiple sections
     if (!isMobile && cursor) {
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
