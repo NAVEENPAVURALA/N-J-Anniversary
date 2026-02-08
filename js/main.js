@@ -41,8 +41,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // --------------------------------------------------------------------------
     // 1. Core Setup & Mobile Normalize
     // --------------------------------------------------------------------------
+    // --------------------------------------------------------------------------
+    // 1. Core Setup & Mobile Normalize
+    // --------------------------------------------------------------------------
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    const lenis = new Lenis({ duration: isMobile ? 1.2 : 2.0, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), direction: 'vertical', smooth: true, smoothTouch: false, touchMultiplier: 2 });
+
+    // OPTIMIZED: Smoother mobile settings, less resistance
+    const lenis = new Lenis({
+        duration: isMobile ? 1.0 : 1.8,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        smooth: true,
+        smoothTouch: false, // Let native touch handle scrolling on mobile for better performance
+        touchMultiplier: 2
+    });
+
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
     gsap.registerPlugin(ScrollTrigger);
