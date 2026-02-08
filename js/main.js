@@ -371,22 +371,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const footerTrigger = document.getElementById('footer-trigger');
     if (footerTrigger) {
         footerTrigger.addEventListener('click', () => {
-            console.log("Heart rain triggered!");
-            const hearts = ['❤️', '💖', '✨', '🌹', '🦋'];
+            console.log("Rose rain triggered!");
             const container = document.getElementById('heart-container') || document.body;
 
-            for (let i = 0; i < 50; i++) { // Increased count
+            for (let i = 0; i < 50; i++) {
                 setTimeout(() => {
-                    const h = document.createElement('div');
-                    h.className = 'heart';
-                    h.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+                    const h = document.createElement('img'); // Changed to img
+                    h.src = 'rose-petal.png';
+                    h.className = 'heart'; // Keep class for animation, or rename to 'rose-rain' if you prefer
                     h.style.left = Math.random() * 100 + 'vw';
-                    h.style.animationDuration = (Math.random() * 3 + 2) + 's'; // 2-5s fall
+                    h.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    h.style.transform = `rotate(${Math.random() * 360}deg)`; // Random start rotation
                     container.appendChild(h);
 
                     // Cleanup
                     setTimeout(() => h.remove(), 5000);
-                }, i * 50); // Faster spawn rate
+                }, i * 100); // Slower spawn for better impact
             }
         });
     }

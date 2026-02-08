@@ -1317,20 +1317,19 @@ h3,
     }
 }
 
-/* Heart Rain Physics */
+/* Heart/Rose Rain Physics */
 .heart {
     position: fixed;
     top: -10vh;
-    /* Start slightly higher */
-    font-size: 2rem;
-    /* Larger hearts */
+    width: 40px;
+    /* Size for rose petal */
+    height: auto;
     pointer-events: none;
     z-index: 10000;
-    /* Max z-index */
     animation-name: fall;
     animation-timing-function: linear;
-    /* Linear is more reliable for rain */
     animation-fill-mode: forwards;
+    opacity: 0.9;
 }
 
 @keyframes fall {
