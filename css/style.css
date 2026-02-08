@@ -977,42 +977,54 @@ h3,
     opacity: 1;
 }
 
+/* Textured Paper Look */
 .letter-paper {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    padding: 3rem;
-    border: 1px solid rgba(179, 143, 111, 0.2);
+    background: #fdfbf7;
+    /* Creamy paper */
+    background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
+    /* Subtle texture */
+    padding: 4rem 3rem 6rem;
+    /* Extra bottom padding for flowers */
+    border: none;
     text-align: left;
     font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    /* Larger */
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    font-size: 1.25rem;
+    /* Readable ink size */
+    line-height: 1.9;
+    color: #2c2c2c;
+    /* Dark text like ink */
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
+    /* Subtle depth */
+    position: relative;
+    /* For absolute positioning of rose */
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-/* Rose Header in Letter */
-/* Rose Header in Letter */
+/* Rose at Bottom Left (Reference Style) */
 .letter-rose-header {
-    width: 100%;
-    max-width: 220px;
-    /* Larger for watermark feel */
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 180px;
+    /* Decent size */
+    max-width: none;
     height: auto;
     display: block;
-    margin: 0 auto 1rem;
+    margin: 0;
+
     border-radius: 0;
-    box-shadow: none;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    /* Drop shadow for realism */
     border: none;
-
-    /* VIGNETTE MASK to soft-fade edges */
-    mask-image: radial-gradient(circle, black 30%, transparent 70%);
-    -webkit-mask-image: radial-gradient(circle, black 30%, transparent 70%);
-
-    opacity: 0.85;
-    /* Subtle overlay */
-    mix-blend-mode: screen;
-    /* Blends nicely if background is dark */
+    mask-image: none;
+    /* Remove vignette */
+    -webkit-mask-image: none;
+    opacity: 1;
+    /* Full visibility */
+    mix-blend-mode: normal;
+    transform: rotate(-10deg);
+    /* Slight natural tilt */
 }
 
 .letter-paper p {
