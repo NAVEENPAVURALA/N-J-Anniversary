@@ -441,13 +441,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Render Function (Cover Logic)
         function render() {
+            // Safety: Round logic to prevent float errors
+            let constIndex = Math.round(currentFrame.index);
+            // Clamp to valid range
+            if (constIndex >= frameCount) constIndex = frameCount - 1;
+            if (constIndex < 0) constIndex = 0;
+
             // Ensure image is loaded
-            if (!images[currentFrame.index] || !images[currentFrame.index].complete) return;
+            if (!images[constIndex] || !images[constIndex].complete) return;
 
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
-            const img = images[currentFrame.index];
+            const img = images[constIndex];
             const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
             const x = (canvas.width / 2) - (img.width / 2) * scale;
             const y = (canvas.height / 2) - (img.height / 2) * scale;
