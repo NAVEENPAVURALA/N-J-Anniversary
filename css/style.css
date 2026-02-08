@@ -1169,7 +1169,8 @@ h3,
 
 /* 4. Infinite Footer */
 .infinite-footer {
-    padding: 4rem 0;
+    padding: 4rem 0 0 0;
+    /* Top padding only, no bottom padding */
     background: linear-gradient(to top, #000 0%, transparent 100%);
     position: relative;
     z-index: 20;
@@ -1224,20 +1225,20 @@ h3,
 .footer-rose-garden {
     width: 100%;
     max-width: none;
-    /* Full width */
     height: auto;
     display: block;
-    margin: 1rem 0 0;
-    /* Reduced margin */
+    margin: 0;
+    /* No margin */
+    padding: 0;
     opacity: 1;
-    /* Increased opacity for impact */
-    mask-image: linear-gradient(to top, black 80%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to top, black 80%, transparent 100%);
+    mask-image: linear-gradient(to top, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to top, black 85%, transparent 100%);
     position: relative;
     z-index: 10;
     pointer-events: none;
     object-fit: cover;
-    /* Ensure it covers nicely */
+    vertical-align: bottom;
+    /* Removes inline gap */
 }
 
 /* 4. Cinematic Blur Reveal */
