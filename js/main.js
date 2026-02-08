@@ -271,14 +271,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let ds = document.querySelector('.hero-date') ? new ScrambleText(document.querySelector('.hero-date'), '0123456789-./') : null;
 
     if (enterBtn) {
-        console.log("Enter Button Found, attaching listener...");
         enterBtn.addEventListener('click', () => {
-            console.log("Enter Button Clicked!");
             try {
                 if (audio) {
                     audio.volume = 0;
                     audio.play().then(() => {
-                        console.log("Audio playing...");
                         gsap.to(audio, { volume: 1.0, duration: 3 });
                     }).catch(e => console.error("Audio playback failed:", e));
                     document.getElementById('audio-control')?.classList.add('playing');
