@@ -1247,6 +1247,9 @@ h3,
     z-index: 10;
     pointer-events: none;
     object-fit: cover;
+    transform: translateY(12%) scale(1.02);
+    /* Push down significantly to hide bottom gap/edge */
+    transform-origin: bottom center;
 }
 
 /* 4. Cinematic Blur Reveal */
