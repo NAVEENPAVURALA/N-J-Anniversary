@@ -392,29 +392,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // --------------------------------------------------------------------------
-    // 9. REALISTIC ROSE PETALS (REMOVED FOR PERFORMANCE)
+    // 9. Rose Rain Logic (Footer Trigger)
     // --------------------------------------------------------------------------
-    // User requested removal to fix lag.
-    // function createRealPetal() { ... } 
-    // setInterval(createRealPetal, 1200);
-
-    // --------------------------------------------------------------------------
-    // 10. Letter & Footer
-    // --------------------------------------------------------------------------
-    document.getElementById('open-letter-btn')?.addEventListener('click', (e) => {
-        document.getElementById('letter-content').classList.toggle('open');
-        e.currentTarget.textContent = document.getElementById('letter-content').classList.contains('open') ? "Close" : "Read My Heart";
-    });
-
     const footerTrigger = document.getElementById('footer-trigger');
     if (footerTrigger) {
         footerTrigger.addEventListener('click', () => {
-            console.log("Rose rain triggered!");
             const container = document.getElementById('heart-container') || document.body;
+            const petalImages = ['rose-petal.png', 'rose-petal-2.png'];
 
-            const petalImages = ['rose-petal.png', 'rose-petal-2.png']; // Multiple variants
-
-            for (let i = 0; i < 60; i++) { // Increased count for better density
+            for (let i = 0; i < 60; i++) {
                 setTimeout(() => {
                     const h = document.createElement('img');
                     h.src = petalImages[Math.floor(Math.random() * petalImages.length)]; // Random pick
